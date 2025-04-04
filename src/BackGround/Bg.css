@@ -1,0 +1,158 @@
+/* GradientBackground.css */
+/* 1. Үндсэн хувьсагчууд */
+:root {
+  /* Өнгөнүүд */
+  --bg-color-light: #ffffff;
+  --text-color-light: #000000;
+  --bg-color-dark: #111111;
+  --text-color-dark: #ffffff;
+  
+  /* Градиент өнгөнүүд */
+  --color-bg1: hsl(0, 0%, 0%);
+  --color-bg2: hsl(0, 0%, 0%);
+  --color3: 100, 100, 100;
+  
+  /* Шилжилтүүд */
+  --transition-duration: 0.4s;
+  --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Бусад тогтмолууд */
+  --circle-size: 120%;
+  --blending: screen;
+}
+
+/* 2. Глобал шилжилтүүд */
+*,
+*::before,
+*::after {
+  transition: 
+    color var(--transition-duration) var(--transition-timing),
+    background-color var(--transition-duration) var(--transition-timing),
+    border-color var(--transition-duration) var(--transition-timing),
+    opacity var(--transition-duration) var(--transition-timing);
+}
+
+/* 3. Горимын стайлууд */
+html {
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
+}
+
+html.dark {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
+/* Градиент өнгүүдийн тохиргоо */
+html:not(.dark) .gradient-bg {
+  --color-bg1: hsl(0, 0%, 90%);
+  --color-bg2: hsl(0, 0%, 80%);
+}
+
+html.dark .gradient-bg {
+  --color-bg1: hsl(0, 0%, 0%);
+  --color-bg2: hsl(0, 0%, 0%);
+}
+
+/* Градиент арын дэвсгэр стайл */
+.gradient-bg {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  overflow: hidden;
+  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: 
+    background var(--transition-duration) var(--transition-timing),
+    --color-bg1 var(--transition-duration) var(--transition-timing),
+    --color-bg2 var(--transition-duration) var(--transition-timing);
+}
+
+svg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+}
+
+.gradients-container {
+  filter: url(#goo) blur(40px);
+  width: 100%;
+  height: 100%;
+}
+
+.g3, .g4, .g5 {
+  position: absolute;
+  background: radial-gradient(circle at center, rgba(var(--color3), 0.5) 0, rgba(var(--color3), 0) 50%) no-repeat;
+  mix-blend-mode: var(--blending);
+  width: var(--circle-size);
+  height: var(--circle-size);
+  transform-origin: center center;
+}
+
+.g4 {
+  background: radial-gradient(circle at center, rgba(var(--color3), 0.5) 0, rgba(var(--color3), 0) 50%);
+  transform-origin: calc(50% - 200px);
+  animation: moveHorizontal 40s ease infinite;
+}
+
+.g5 {
+  background: radial-gradient(circle at center, rgba(var(--color3), 0.5) 0, rgba(var(--color3), 0) 50%);
+  width: calc(var(--circle-size) * 2.5);
+  height: calc(var(--circle-size) * 2.5);
+  top: calc(50% - var(--circle-size));
+  left: calc(50% - var(--circle-size));
+  transform-origin: calc(50% - 800px) calc(50% + 200px);
+  animation: moveInCircle 20s ease infinite;
+}
+
+.interactive {
+  position: absolute;
+  background: radial-gradient(circle at center, rgba(var(--color3), 0.6) 0, rgba(var(--color3), 0) 50%) no-repeat;
+  mix-blend-mode: var(--blending);
+  width: 150%;
+  height: 150%;
+  top: -50%;
+  left: -50%;
+  opacity: 0.8;
+}
+
+/* Анимэйшн дүрсүүд */
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}

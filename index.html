@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ELIXIR</title>
+    
+    <!-- Preload dark mode settings to prevent flash -->
+    <script>
+      // Apply theme immediately before any components render
+      (function() {
+        const prefersDarkMode = localStorage.getItem('theme') === 'dark' || 
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (prefersDarkMode) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.style.setProperty('--bg-color', 'var(--bg-color-dark, #111111)');
+          document.documentElement.style.setProperty('--text-color', 'var(--text-color-dark, #ffffff)');
+          document.documentElement.style.setProperty('--color-bg1', 'hsl(0, 0%, 0%)');
+          document.documentElement.style.setProperty('--color-bg2', 'hsl(0, 0%, 0%)');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.style.setProperty('--bg-color', 'var(--bg-color-light, #ffffff)');
+          document.documentElement.style.setProperty('--text-color', 'var(--text-color-light, #000000)');
+          document.documentElement.style.setProperty('--color-bg1', 'hsl(0, 0%, 90%)');
+          document.documentElement.style.setProperty('--color-bg2', 'hsl(0, 0%, 80%)');
+        }
+      })();
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&family=Doto:wght@100..900&family=Shadows+Into+Light&family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/logo.png">
+    <link rel="shortcut icon" href="/img/logo.png">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
