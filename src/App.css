@@ -335,6 +335,15 @@ body.loading .scroll-container {
     max-width: 600px;
   }
   
+  /* This makes the second song title appear below the image on mobile */
+  .music-row.right .music-info {
+    order: 2;
+  }
+  
+  .music-row.right .music-item {
+    order: 1;
+  }
+  
   .song-title {
     font-size: 1.5rem;
     margin-top: 1rem;
