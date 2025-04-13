@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import "../BackGround/bg.css";
+import "./bg.css";
 
 export const toggleTheme = () => {
   const isDark = document.documentElement.classList.contains('dark');
