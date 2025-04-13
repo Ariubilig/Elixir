@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Elixir/',
+  base: process.env.VITE_BASE_PATH || "/react-vite-deploy",
   build: {
     minify: 'terser',
     cssMinify: true,
