@@ -132,6 +132,9 @@ function App() {
       const timeout = setTimeout(() => {
         setLoading(false);
         document.body.classList.remove('loading');
+        
+        // Force scroll to top when loading screen closes
+        window.scrollTo(0, 0);
       }, 3000);
       
       return () => {
