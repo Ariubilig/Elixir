@@ -33,7 +33,7 @@ const musicContent = [
 function App() {
   // Get initial dark mode preference before rendering anything
   const prefersDarkMode = localStorage.getItem('theme') === 'dark' || 
-    (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    (localStorage.getItem('theme') !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
   
   const [isDarkMode, setIsDarkMode] = useState(prefersDarkMode);
   const [loading, setLoading] = useState(true);
@@ -146,7 +146,11 @@ function App() {
     document.documentElement.classList.add('transitioning');
     
     // Toggle dark mode
-    setIsDarkMode(prev => !prev);
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    
+    // Store preference
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
     
     // Remove transitioning class after animation completes
     setTimeout(() => {

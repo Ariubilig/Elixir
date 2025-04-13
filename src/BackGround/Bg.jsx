@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import "./bg.css";
+import "./Bg.css";
 
 export const toggleTheme = () => {
   const isDark = document.documentElement.classList.contains('dark');
@@ -7,9 +7,11 @@ export const toggleTheme = () => {
   if (isDark) {
     document.documentElement.classList.remove('dark');
     localStorage.setItem('theme', 'light');
+    document.dispatchEvent(new Event('themeChanged'));
   } else {
     document.documentElement.classList.add('dark');
     localStorage.setItem('theme', 'dark');
+    document.dispatchEvent(new Event('themeChanged'));
   }
 };
 
@@ -45,7 +47,7 @@ function Bg() {
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e) => {
-      if (!localStorage.getItem('theme')) {
+      if (localStorage.getItem('theme') !== 'light' && localStorage.getItem('theme') !== 'dark') {
         if (e.matches) {
           document.documentElement.classList.add('dark');
           setIsDarkMode(true);
@@ -56,8 +58,15 @@ function Bg() {
       }
     };
 
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    } else if (mediaQuery.addListener) {
+      mediaQuery.addListener(handleChange);
+      return () => mediaQuery.removeListener(handleChange);
+    }
+    
+    return undefined;
   }, []);
 
   useEffect(() => {
