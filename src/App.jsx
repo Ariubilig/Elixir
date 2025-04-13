@@ -9,7 +9,7 @@ import phoneLightIcon from '/img/icons/phone-light.png'
 import phoneDarkIcon from '/img/icons/phone-dark.png'
 
 // Artists data for loading screen
-const artists = ["RARI", "EMURACS", "SITAN", "SANDAN", "BELLATTIX", "AKMET"];
+const artists = ["RARI", "EMURACS", "SITAN", "SANDAN", "BELLATTIX", "NOEL"];
 
 // Music content data
 const musicContent = [
