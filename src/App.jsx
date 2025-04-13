@@ -14,19 +14,19 @@ const artists = ["RARI", "EMURACS", "SITAN", "SANDAN", "BELLATTIX", "AKMET"];
 // Music content data
 const musicContent = [
   {
-    title: "Emira ft Noel - Paradise",
-    thumbnail: `https://i.ytimg.com/vi/cgVu-QI7uF4/mqdefault.jpg`,
-    youtubeLink: "https://youtu.be/cgVu-QI7uF4",
+    title: "Grim  - TARANTUULAI",
+    thumbnail: `https://i.ytimg.com/vi/0hMYVg5IXHk/hqdefault.jpg?sqp=-oaymwFBCNACELwBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-CYACzgWKAgwIABABGEogUShlMA8=&rs=AOn4CLCN1kbYQC5OXB3hdqFlkz5ir0p7iQ`,
+    youtubeLink: "https://youtu.be/U01YNKD11o8",
   },
   {
-    title: "Emira - Setgel",
-    thumbnail: `https://i.ytimg.com/vi/hgVXBWVm824/mqdefault.jpg`,
-    youtubeLink: "https://youtu.be/hgVXBWVm824",
+    title: "Bellatrix  - Uuriin Gegee",
+    thumbnail: `https://i.ytimg.com/an_webp/lwj7M1-Wy8Y/mqdefault_6s.webp?du=3000&sqp=CMLW7b8G&rs=AOn4CLD73ZIjHAdpTbuDItn1BqGme37ZKw`,
+    youtubeLink: "https://youtu.be/lwj7M1-Wy8Y",
   },
   {
-    title: "Emira - 7AM",
-    thumbnail: `https://i.ytimg.com/vi/2giSYHljK3Q/mqdefault.jpg`,
-    youtubeLink: "https://youtu.be/2giSYHljK3Q",
+    title: "Emira ft Noel & Bellatrix - Untitled",
+    thumbnail: `https://i.ytimg.com/vi/U01YNKD11o8/hqdefault.jpg?sqp=-oaymwFBCNACELwBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-CYACzgWKAgwIABABGEogUihlMA8=&rs=AOn4CLBLIkf5CAv4-JLU3_DSDzEO-eENjw`,
+    youtubeLink: "https://youtu.be/U01YNKD11o8",
   }
 ];
 
