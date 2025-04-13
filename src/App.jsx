@@ -240,7 +240,11 @@ function App() {
                               <img 
                                 src={song.thumbnail} 
                                 alt={song.title} 
-                                className="music-thumbnail" 
+                                className="music-thumbnail"
+                                loading="lazy"  
+                                width="640"
+                                height="360"
+                                decoding="async"
                               />
                               <div className="thumbnail-fallback">YouTube Video</div>
                             </a>
@@ -259,7 +263,11 @@ function App() {
                               <img 
                                 src={song.thumbnail} 
                                 alt={song.title} 
-                                className="music-thumbnail" 
+                                className="music-thumbnail"
+                                loading="lazy"  
+                                width="640"
+                                height="360"
+                                decoding="async"
                               />
                               <div className="thumbnail-fallback">YouTube Video</div>
                             </a>

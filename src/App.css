@@ -297,6 +297,7 @@ body.loading .scroll-container {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
   position: relative;
+  aspect-ratio: 16/9;
 }
 
 .thumbnail-container:hover {
@@ -310,6 +311,8 @@ body.loading .scroll-container {
   display: block;
   object-fit: cover;
   min-height: 200px;
+  will-change: transform;
+  content-visibility: auto;
 }
 
 .song-title {

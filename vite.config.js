@@ -20,5 +20,12 @@ export default defineConfig({
     },
     target: 'es2018',
     reportCompressedSize: true,
+    sourcemap: false,
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true,
+      },
+    },
   },
 })
