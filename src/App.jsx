@@ -1,9 +1,9 @@
-import { useState, useEffect, createContext } from 'react'
+import { useState, useEffect, createContext, useRef } from 'react'
 import './App.css'
 import Bg from './BackGround/Bg'
 
 // Import icon images directly from assets
-import instaLightIcon from '../public/img/icons/insta-light.png'
+import instaLightIcon from '/img/icons/insta-light.png'
 import instaDarkIcon from '../public/img/icons/insta-dark.png'
 import phoneLightIcon from '../public/img/icons/phone-light.png'
 import phoneDarkIcon from '../public/img/icons/phone-dark.png'
@@ -198,6 +198,17 @@ function App() {
         scrollContainer.style.scrollSnapType = 'none';
         scrollContainer.style.scrollBehavior = 'auto';
       }
+    }
+  }, []);
+
+  // import.meta.env.BASE_URL ашиглах
+  const baseUrl = import.meta.env.BASE_URL || '/Elixir/';
+
+  const appRef = useRef(null);
+
+  useEffect(() => {
+    if (appRef.current) {
+      // querySelector оронд appRef.current-руу хандах
     }
   }, []);
 
