@@ -2,8 +2,8 @@ import { useState, useEffect, createContext, useRef } from 'react'
 import './App.css'
 import Bg from './BackGround/Bg'
 
-// Import icon images directly from assets
-import instaLightIcon from '/img/icons/insta-light.png'
+// Import icon images from public folder
+import instaLightIcon from '../public/img/icons/insta-light.png'
 import instaDarkIcon from '../public/img/icons/insta-dark.png'
 import phoneLightIcon from '../public/img/icons/phone-light.png'
 import phoneDarkIcon from '../public/img/icons/phone-dark.png'
@@ -15,17 +15,17 @@ const artists = ["RARI", "EMURACS", "SITAN", "SANDAN", "BELLATTIX", "NOEL"];
 const musicContent = [
   {
     title: "Grim  - TARANTUULAI",
-    thumbnail: `https://i.ytimg.com/vi/0hMYVg5IXHk/hqdefault.jpg?sqp=-oaymwFBCNACELwBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-CYACzgWKAgwIABABGEogUShlMA8=&rs=AOn4CLCN1kbYQC5OXB3hdqFlkz5ir0p7iQ`,
+    thumbnail: `https://i.ytimg.com/vi/0hMYVg5IXHk/mqdefault.jpg`,
     youtubeLink: "https://youtu.be/U01YNKD11o8",
   },
   {
     title: "Bellatrix  - Uuriin Gegee",
-    thumbnail: `https://i.ytimg.com/vi/lwj7M1-Wy8Y/hqdefault.jpg?sqp=-oaymwFBCNACELwBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-CYACzgWKAgwIABABGH8gUSgWMA8=&rs=AOn4CLBHEAoi_-Izos4xw9H5TvLrxckpMg`,
+    thumbnail: `https://i.ytimg.com/vi/lwj7M1-Wy8Y/mqdefault.jpg`,
     youtubeLink: "https://youtu.be/lwj7M1-Wy8Y",
   },
   {
     title: "Emira ft Noel & Bellatrix - Untitled",
-    thumbnail: `https://i.ytimg.com/vi/U01YNKD11o8/hqdefault.jpg?sqp=-oaymwFBCNACELwBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-CYACzgWKAgwIABABGEogUihlMA8=&rs=AOn4CLBLIkf5CAv4-JLU3_DSDzEO-eENjw`,
+    thumbnail: `https://i.ytimg.com/vi/U01YNKD11o8/mqdefault.jpg`,
     youtubeLink: "https://youtu.be/U01YNKD11o8",
   }
 ];
@@ -324,7 +324,8 @@ function App() {
             <div className="header-line"></div>
             <div className="max-w-6xl mx-auto flex flex-col items-center justify-center width-90">
               <div className="flex space-x-6 mb-4">
-                <a href="https://www.instagram.com/elixir_recordsofficial" target="_blank" rel="noreferrer" className="hover:opacity-70 cursor-pointer relative" style={{width: '24px', height: '24px'}}>
+                {/* Icons will be added later */}
+                {/* <a href="https://www.instagram.com/elixir_recordsofficial" target="_blank" rel="noreferrer" className="hover:opacity-70 cursor-pointer relative" style={{width: '24px', height: '24px'}}>
                   <img 
                     src={instaLightIcon} 
                     alt="Instagram" 
@@ -379,7 +380,7 @@ function App() {
                       left: 0
                     }} 
                   />
-                </a>
+                </a> */}
               </div>
               <div className="text-center text-sm copyright-text">
                 © {new Date().getFullYear()} ELIXIR Records

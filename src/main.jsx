@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
+// Tailwind CDN конфигурацийг relative URL-тай болгох
+const baseUrl = "/Elixir/";
+
 // Add a script tag for Tailwind CSS via CDN with dark mode configuration
 // Use a preconnect for Tailwind CDN
 const preconnect = document.createElement('link');
