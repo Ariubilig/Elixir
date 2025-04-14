@@ -20,7 +20,7 @@ const musicContent = [
   },
   {
     title: "Bellatrix  - Uuriin Gegee",
-    thumbnail: `https://i.ytimg.com/an_webp/lwj7M1-Wy8Y/mqdefault_6s.webp?du=3000&sqp=CMLW7b8G&rs=AOn4CLD73ZIjHAdpTbuDItn1BqGme37ZKw`,
+    thumbnail: `https://i.ytimg.com/vi/lwj7M1-Wy8Y/hqdefault.jpg?sqp=-oaymwFBCNACELwBSFryq4qpAzMIARUAAIhCGAHYAQHiAQoIGBACGAY4AUAB8AEB-AH-CYACzgWKAgwIABABGH8gUSgWMA8=&rs=AOn4CLBHEAoi_-Izos4xw9H5TvLrxckpMg`,
     youtubeLink: "https://youtu.be/lwj7M1-Wy8Y",
   },
   {
