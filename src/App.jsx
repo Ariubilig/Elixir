@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext } from 'react'
 import './App.css'
 import Bg from './BackGround/Bg'
 
@@ -29,6 +29,23 @@ const musicContent = [
     youtubeLink: "https://youtu.be/U01YNKD11o8",
   }
 ];
+
+const ThemeContext = createContext();
+
+function ThemeProvider({ children }) {
+  const [isDarkMode, setIsDarkMode] = useState(
+    localStorage.getItem('theme') === 'dark' || 
+    (localStorage.getItem('theme') !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  );
+  
+  // ... theme логик
+  
+  return (
+    <ThemeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
 
 function App() {
   // Get initial dark mode preference before rendering anything
@@ -221,7 +238,8 @@ function App() {
                 <span>E</span><span>L</span><span>I</span><span>X</span><span>I</span><span>R</span>
               </div>
               <div className="mt-8 text-center text-base max-w-md shadows-into-light">    
-                WE'RE A GROUP OF YOUNG PEOPLE STARTING OUR OWN CLOTHING BRAND /STARTING FROM THE BOTTOM/
+                WE'RE A GROUP OF YOUNG PEOPLE STARTING OUR STUDIO
+                 <br /> /STARTING FROM THE BOTTOM/
               </div>
               <div className="mt-8 text-center max-w-md shadows-into-light custom-text">
                 COMING SOON
