@@ -2,11 +2,11 @@ import { useState, useEffect, createContext, useRef } from 'react'
 import './App.css'
 import Bg from './BackGround/Bg'
 
-// Import icon images from public folder
-import instaLightIcon from '../public/img/icons/insta-light.png'
-import instaDarkIcon from '../public/img/icons/insta-dark.png'
-import phoneLightIcon from '../public/img/icons/phone-light.png'
-import phoneDarkIcon from '../public/img/icons/phone-dark.png'
+// Import SVG иконууд шууд URL-аар
+import LightInstaSvg from './assets/img/icons/LightInsta.svg'
+import DarkInstaSvg from './assets/img/icons/DarkInsta.svg'
+import LightPhoneSvg from './assets/img/icons/LightPhone.svg'
+import DarkPhoneSvg from './assets/img/icons/DarkPhone.svg'
 
 // Artists data for loading screen
 const artists = ["RARI", "EMURACS", "SITAN", "SANDAN", "BELLATTIX", "NOEL"];
@@ -324,10 +324,9 @@ function App() {
             <div className="header-line"></div>
             <div className="max-w-6xl mx-auto flex flex-col items-center justify-center width-90">
               <div className="flex space-x-6 mb-4">
-                {/* Icons will be added later */}
-                {/* <a href="https://www.instagram.com/elixir_recordsofficial" target="_blank" rel="noreferrer" className="hover:opacity-70 cursor-pointer relative" style={{width: '24px', height: '24px'}}>
+                <a href="https://www.instagram.com/elixir_recordsofficial" target="_blank" rel="noreferrer" className="hover:opacity-70 cursor-pointer relative" style={{width: '24px', height: '24px'}}>
                   <img 
-                    src={instaLightIcon} 
+                    src={LightInstaSvg} 
                     alt="Instagram" 
                     width="24" 
                     height="24" 
@@ -340,7 +339,7 @@ function App() {
                     }} 
                   />
                   <img 
-                    src={instaDarkIcon} 
+                    src={DarkInstaSvg} 
                     alt="Instagram" 
                     width="24" 
                     height="24" 
@@ -355,7 +354,7 @@ function App() {
                 </a>
                 <a href="tel:+976########" className="hover:opacity-70 cursor-pointer relative" style={{width: '24px', height: '24px'}}>
                   <img 
-                    src={phoneLightIcon} 
+                    src={LightPhoneSvg} 
                     alt="Phone" 
                     width="24" 
                     height="24" 
@@ -368,7 +367,7 @@ function App() {
                     }} 
                   />
                   <img 
-                    src={phoneDarkIcon} 
+                    src={DarkPhoneSvg} 
                     alt="Phone" 
                     width="24" 
                     height="24" 
@@ -380,7 +379,7 @@ function App() {
                       left: 0
                     }} 
                   />
-                </a> */}
+                </a>
               </div>
               <div className="text-center text-sm copyright-text">
                 © {new Date().getFullYear()} ELIXIR Records
