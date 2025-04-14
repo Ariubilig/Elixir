@@ -236,7 +236,7 @@ body.loading .scroll-container {
 }
 
 .header-line {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   border: none;
   height: 1px;
@@ -244,6 +244,15 @@ body.loading .scroll-container {
   margin: -0.25rem auto 1rem;
   opacity: 0.3;
   transition: background-color 0.7s ease;
+}
+
+/* Footer line should match header line */
+footer .header-line-container,
+header .header-line-container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 /* Music section */

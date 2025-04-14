@@ -239,7 +239,9 @@ function App() {
                 </button>
               </div>
             </div>
-            <div className="header-line"></div>
+            <div className="header-line-container">
+              <div className="header-line"></div>
+            </div>
           </header>
 
           {/* First Page */}
@@ -321,7 +323,9 @@ function App() {
           </section>
 
           <footer className="py-12 px-8">
-            <div className="header-line"></div>
+            <div className="header-line-container">
+              <div className="header-line"></div>
+            </div>
             <div className="max-w-6xl mx-auto flex flex-col items-center justify-center width-90">
               <div className="flex space-x-6 mb-4">
                 <a href="https://www.instagram.com/elixir_recordsofficial" target="_blank" rel="noreferrer" className="hover:opacity-70 cursor-pointer relative" style={{width: '24px', height: '24px'}}>
