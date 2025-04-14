@@ -3,10 +3,10 @@ import './App.css'
 import Bg from './BackGround/Bg'
 
 // Import icon images directly from assets
-import instaLightIcon from '/img/icons/insta-light.png'
-import instaDarkIcon from '/img/icons/insta-dark.png'
-import phoneLightIcon from '/img/icons/phone-light.png'
-import phoneDarkIcon from '/img/icons/phone-dark.png'
+import instaLightIcon from '../public/img/icons/insta-light.png'
+import instaDarkIcon from '../public/img/icons/insta-dark.png'
+import phoneLightIcon from '../public/img/icons/phone-light.png'
+import phoneDarkIcon from '../public/img/icons/phone-dark.png'
 
 // Artists data for loading screen
 const artists = ["RARI", "EMURACS", "SITAN", "SANDAN", "BELLATTIX", "NOEL"];
