@@ -7,6 +7,25 @@
     <title>ELIXIR KOMBINAT</title>
     <!-- Base URL -->
     <base href="/Elixir/">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="./src/assets/img/logo.png" as="image" />
+    <link rel="preload" href="./src/index.css" as="style" />
+    <link rel="preload" href="./src/App.css" as="style" />
+    <link rel="preload" href="./src/BackGround/bg.css" as="style" />
+    <link rel="preload" href="./src/main.jsx" as="script" />
+    
+    <!-- Preload icons that appear immediately -->
+    <link rel="preload" href="./src/assets/img/icons/LightInsta.svg" as="image" />
+    <link rel="preload" href="./src/assets/img/icons/DarkInsta.svg" as="image" />
+    <link rel="preload" href="./src/assets/img/icons/LightPhone.svg" as="image" />
+    <link rel="preload" href="./src/assets/img/icons/DarkPhone.svg" as="image" />
+    
+    <!-- Preload music thumbnails -->
+    <link rel="preload" href="https://i.ytimg.com/vi/0hMYVg5IXHk/mqdefault.jpg" as="image" />
+    <link rel="preload" href="https://i.ytimg.com/vi/lwj7M1-Wy8Y/mqdefault.jpg" as="image" />
+    <link rel="preload" href="https://i.ytimg.com/vi/U01YNKD11o8/mqdefault.jpg" as="image" />
+    
     <!-- Performance optimizations -->
     <link rel="stylesheet" href="./src/BackGround/bg.css">
     <link rel="stylesheet" href="./src/App.css">
@@ -18,6 +37,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Protest+Revolution&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/anton/v23/1Ptgg87LROyAm3Kz-Co.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/protestrevolution/v1/5h1mipRGOKH_UDeL2dKYCKbA4TLvRQZOjkD-VPQ.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://fonts.gstatic.com/s/shadowsintolight/v15/UqyNK9UOIntux_czAvDQx_ZcHqZXBNQzdcD5.woff2" as="font" type="font/woff2" crossorigin>
   </head>
   <body>
     <div id="root"></div>
