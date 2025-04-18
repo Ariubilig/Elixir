@@ -9,6 +9,9 @@
 
     <base href="/Elixir/">
     
+    <!-- Force full-scale rendering -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
     <!-- Preload critical resources -->
     <link rel="preload" href="./src/assets/img/logo.png" as="image" />
     <link rel="preload" href="./src/index.css" as="style" />
@@ -47,6 +50,22 @@
     <link rel="preload" href="https://fonts.gstatic.com/s/protestrevolution/v1/5h1mipRGOKH_UDeL2dKYCKbA4TLvRQZOjkD-VPQ.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="https://fonts.gstatic.com/s/shadowsintolight/v15/UqyNK9UOIntux_czAvDQx_ZcHqZXBNQzdcD5.woff2" as="font" type="font/woff2" crossorigin>
   
+    <!-- Font loading detection -->
+    <style>
+      .fonts-loaded .moving-text {
+        opacity: 1;
+      }
+      .moving-text {
+        opacity: 0.9;
+        transition: opacity 0.5s ease;
+      }
+    </style>
+    <script>
+      document.fonts.ready.then(() => {
+        document.documentElement.classList.add('fonts-loaded');
+      });
+    </script>
+
   </head>
   <body>
 

@@ -137,32 +137,32 @@ body.loading .scroll-container {
 .moving-text span:nth-child(5) { animation-delay: 0.8s; }
 .moving-text span:nth-child(6) { animation-delay: 1s; }
 
-/* Responsive text sizes */
+/* Responsive text sizes - Fixed for GitHub Pages */
 .text-9xl {
-  font-size: 6rem;
+  font-size: 6rem !important;
 }
 
 @media (max-width: 480px) {
   .text-9xl {
-    font-size: 3.5rem;
+    font-size: 3.5rem !important;
   }
 }
 
 @media (min-width: 768px) {
   .text-9xl {
-      font-size: 9rem;
+    font-size: 9rem !important;
   }
 }
 
 @media (min-width: 1024px) {
   .text-9xl {
-      font-size: 11rem;
+    font-size: 11rem !important;
   }
 }
 
 @media (min-width: 1280px) {
   .text-9xl {
-      font-size: 13rem;
+    font-size: 13rem !important;
   }
 }
 

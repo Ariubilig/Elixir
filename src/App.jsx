@@ -300,7 +300,7 @@ function App() {
           {/* First Page */}
           <section className="full-page-section first-section">
             <div className="content-wrapper">
-              <div className="text-9xl font-bold flex space-x-2 moving-text protest-revolution">
+              <div className="text-9xl font-bold flex space-x-2 moving-text protest-revolution" style={{fontSize: 'clamp(3.5rem, 8vw, 13rem)'}}>
                 <span>E</span><span>L</span><span>I</span><span>X</span><span>I</span><span>R</span>
               </div>
               <div className="mt-8 text-center text-base max-w-md shadows-into-light">    
