@@ -2,16 +2,18 @@ import { useState, useEffect, createContext, useRef } from 'react'
 import './App.css'
 import Bg from './BackGround/Bg'
 
-// Import SVG иконууд шууд URL-аар
 import LightInstaSvg from './assets/img/icons/LightInsta.svg'
 import DarkInstaSvg from './assets/img/icons/DarkInsta.svg'
 import LightPhoneSvg from './assets/img/icons/LightPhone.svg'
 import DarkPhoneSvg from './assets/img/icons/DarkPhone.svg'
 
-// Artists data for loading screen
+import ShoppingCartLightSvg from './assets/img/icons/shopping_cart_Light.svg'
+import ShoppingCartDarkSvg from './assets/img/icons/shopping_cart_Dark.svg'
+import DarkModeLightSvg from './assets/img/icons/dark_mode_Light.svg'
+import DarkModeDarkSvg from './assets/img/icons/dark_mode_Dark.svg'
+
 const artists = ["RARI", "EMURACS", "SITAN", "SANDAN", "BELLATTIX", "NOEL"];
 
-// Music content data
 const musicContent = [
   {
     title: "Grim  - TARANTUULAI",
@@ -38,7 +40,6 @@ function ThemeProvider({ children }) {
     (localStorage.getItem('theme') !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
   );
   
-  // ... theme логик
   
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
@@ -227,15 +228,67 @@ function App() {
               <div className="text-2xl anton logo-text" onClick={scrollToTop}>ELIXIR KOMBINAT</div>
               <div className="flex items-center space-x-4" id="header-buttons">
                 <button className="p-2 border border-gray-700 rounded-full text-lg flex items-center shopping-cart" aria-label="Shopping cart">
-                  <span className="material-symbols-outlined">shopping_cart</span>
+                  <div className="relative" style={{width: '24px', height: '24px'}}>
+                    <img 
+                      src={ShoppingCartLightSvg} 
+                      alt="Shopping cart" 
+                      width="24" 
+                      height="24" 
+                      style={{
+                        opacity: isDarkMode ? 0 : 1,
+                        transition: 'opacity 0.5s ease',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0
+                      }} 
+                    />
+                    <img 
+                      src={ShoppingCartDarkSvg} 
+                      alt="Shopping cart" 
+                      width="24" 
+                      height="24" 
+                      style={{
+                        opacity: isDarkMode ? 1 : 0,
+                        transition: 'opacity 0.5s ease',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0
+                      }} 
+                    />
+                  </div>
                 </button>
                 <button 
                   className="p-2 border border-gray-700 rounded-full text-lg flex items-center dark-mode-toggle"
                   onClick={toggleDarkMode}
                 >
-                  <span className="material-symbols-outlined">
-                    {isDarkMode ? 'light_mode' : 'dark_mode'}
-                  </span>
+                  <div className="relative" style={{width: '24px', height: '24px'}}>
+                    <img 
+                      src={DarkModeLightSvg} 
+                      alt="Dark mode" 
+                      width="24" 
+                      height="24" 
+                      style={{
+                        opacity: isDarkMode ? 0 : 1,
+                        transition: 'opacity 0.5s ease',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0
+                      }} 
+                    />
+                    <img 
+                      src={DarkModeDarkSvg} 
+                      alt="Light mode" 
+                      width="24" 
+                      height="24" 
+                      style={{
+                        opacity: isDarkMode ? 1 : 0,
+                        transition: 'opacity 0.5s ease',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0
+                      }} 
+                    />
+                  </div>
                 </button>
               </div>
             </div>
