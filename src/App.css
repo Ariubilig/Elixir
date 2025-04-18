@@ -81,39 +81,77 @@ body.loading .scroll-container {
   color: var(--text-color) !important;
 }
 
-@media (max-width: 480px) {
-  .moving-text {
-    gap: 0.1rem;
-  }
-  .moving-text span {
-    animation: move 3s ease-in-out infinite;
-    transform-origin: center;
-  }
-  
-  .text-9xl {
-    font-size: 3.5rem;
-  }
-  
-  .moving-text.space-x-2 > * + * {
-    margin-left: 0.1rem !important;
-  }
-}
-
+/* Base animation */
 @keyframes move {
   0% { transform: translateX(0); opacity: 1; }
-  50% { transform: translateX(20px); opacity: 1; }
+  50% { transform: translateX(15px); opacity: 1; }
   100% { transform: translateX(0); opacity: 1; }
 }
 
 @media (max-width: 480px) {
+  .moving-text {
+    gap: 0 !important;
+    letter-spacing: -0.1rem;
+  }
+  
+  .text-9xl {
+    font-size: 5.5rem !important;
+  }
+  
+  .moving-text.space-x-2 > * + * {
+    margin-left: 0.15rem !important;
+  }
+  
+  .moving-text span {
+    transform-origin: center;
+    font-size: 5.5rem !important;
+    animation-duration: 4s;
+  }
+  
+  /* Анимэйшны хөдөлгөөн багасгах */
   @keyframes move {
     0% { transform: translateX(0); opacity: 1; }
-    50% { transform: translateX(10px); opacity: 1; }
+    50% { transform: translateX(8px); opacity: 1; }
     100% { transform: translateX(0); opacity: 1; }
   }
 }
 
+/* Дунд хэмжээний дэлгэц дээрх анимэйшн */
+@media (min-width: 481px) and (max-width: 1023px) {
+  .moving-text span {
+    animation-duration: 3.5s;
+  }
+  
+  @keyframes move {
+    0% { transform: translateX(0); opacity: 1; }
+    50% { transform: translateX(20px); opacity: 1; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  
+  .moving-text.space-x-2 > * + * {
+    margin-left: 0.5rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .text-9xl {
+    font-size: 9rem !important;
+  }
+}
+
 @media (min-width: 1024px) {
+  .text-9xl {
+    font-size: 11rem !important;
+  }
+  
+  .moving-text.space-x-2 > * + * {
+    margin-left: 0.75rem !important;
+  }
+  
+  .moving-text span {
+    animation-duration: 4s;
+  }
+  
   @keyframes move {
     0% { transform: translateX(0); opacity: 1; }
     50% { transform: translateX(30px); opacity: 1; }
@@ -122,6 +160,18 @@ body.loading .scroll-container {
 }
 
 @media (min-width: 1280px) {
+  .text-9xl {
+    font-size: 13rem !important;
+  }
+  
+  .moving-text.space-x-2 > * + * {
+    margin-left: 1rem !important;
+  }
+  
+  .moving-text span {
+    animation-duration: 5s;
+  }
+  
   @keyframes move {
     0% { transform: translateX(0); opacity: 1; }
     50% { transform: translateX(40px); opacity: 1; }
@@ -136,35 +186,6 @@ body.loading .scroll-container {
 .moving-text span:nth-child(4) { animation-delay: 0.6s; }
 .moving-text span:nth-child(5) { animation-delay: 0.8s; }
 .moving-text span:nth-child(6) { animation-delay: 1s; }
-
-/* Responsive text sizes - Fixed for GitHub Pages */
-.text-9xl {
-  font-size: 6rem !important;
-}
-
-@media (max-width: 480px) {
-  .text-9xl {
-    font-size: 3.5rem !important;
-  }
-}
-
-@media (min-width: 768px) {
-  .text-9xl {
-    font-size: 9rem !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .text-9xl {
-    font-size: 11rem !important;
-  }
-}
-
-@media (min-width: 1280px) {
-  .text-9xl {
-    font-size: 13rem !important;
-  }
-}
 
 /* Layout */
 .scroll-container {
@@ -498,26 +519,4 @@ footer {
   display: flex;
 }
 
-@media (min-width: 1024px) {
-  .moving-text.space-x-2 > * + * {
-    margin-left: 0.75rem !important;
-  }
-}
 
-@media (min-width: 1280px) {
-  .moving-text.space-x-2 > * + * {
-    margin-left: 1rem !important;
-  }
-}
-
-@media (min-width: 1024px) {
-  .moving-text span {
-    animation-duration: 4s;
-  }
-}
-
-@media (min-width: 1280px) {
-  .moving-text span {
-    animation-duration: 5s;
-  }
-}
