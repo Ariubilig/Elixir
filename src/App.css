@@ -518,5 +518,18 @@ footer {
 .failed-thumbnail .thumbnail-fallback {
   display: flex;
 }
+#firstaaabbb {
+  font-size: 1em; /* base size for mobile */
+}
 
+@media (min-width: 768px) {
+  #firstaaabbb {
+    font-size: 1.1em;
+  }
+}
 
+@media (min-width: 1024px) {
+  #firstaaabbb {
+    font-size: 1.2em;
+  }
+}

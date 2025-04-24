@@ -303,9 +303,13 @@ function App() {
               <div className="text-9xl font-bold flex space-x-2 moving-text protest-revolution" style={{fontSize: 'clamp(5.5rem, 12vw, 13rem)'}}>
                 <span>E</span><span>L</span><span>I</span><span>X</span><span>I</span><span>R</span>
               </div>
-              <div className="mt-8 text-center text-base max-w-md shadows-into-light">    
+              <div className="mt-8 text-center max-w-md shadows-into-light">
+                <p id='firstaaabbb'>
+
                 WE'RE A GROUP OF YOUNG PEOPLE STARTING OUR STUDIO
                  <br /> /STARTING FROM THE BOTTOM/
+
+                </p>
               </div>
               <div className="mt-8 text-center max-w-md shadows-into-light custom-text">
                 COMING SOON
