@@ -3,11 +3,7 @@ import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr'
 
 export default defineConfig({
-  plugins: [
-    react(),
-    svgr()
-  ],
-  base: '/Elixir/',
+  plugins: [react(), svgr()],
   publicDir: 'public',
   build: {
     minify: 'terser',
@@ -16,7 +12,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor': ['react', 'react-dom'],
+          vendor: ['react', 'react-dom'],
         },
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
@@ -37,10 +33,10 @@ export default defineConfig({
     alias: {
       '@': '/src',
       '@assets': '/src/assets',
-      '@public': '/public'
-    }
+      '@public': '/public',
+    },
   },
   optimizeDeps: {
     include: ['react', 'react-dom'],
-  }
+  },
 })
