@@ -12,6 +12,9 @@ import ShoppingCartDarkSvg from './assets/img/icons/shopping_cart_Dark.svg'
 import DarkModeLightSvg from './assets/img/icons/dark_mode_Light.svg'
 import DarkModeDarkSvg from './assets/img/icons/dark_mode_Dark.svg'
 
+import { Analytics } from "@vercel/analytics/react"
+
+
 const artists = ["RARI", "EMURACS", "SITAN", "SANDAN", "BELLATTIX", "NOEL"];
 
 const musicContent = [
@@ -215,6 +218,9 @@ function App() {
 
   return (
     <>
+
+      <Analytics/>
+
       <Bg />
       
       {loading ? (
