@@ -2,6 +2,9 @@ import { useState, useEffect, createContext, useRef } from 'react'
 import './App.css'
 import Bg from './BackGround/Bg'
 
+import Header from './components/header/header'
+import Footer from './components/footer/footer'
+
 import LightInstaSvg from './assets/img/icons/LightInsta.svg'
 import DarkInstaSvg from './assets/img/icons/DarkInsta.svg'
 import LightPhoneSvg from './assets/img/icons/LightPhone.svg'
@@ -229,6 +232,9 @@ function App() {
         </div>
       ) : (
         <div className="scroll-container">
+
+          {/* <Header /> */}
+
           <header className="w-full">
             <div className="header-content">
               <div className="text-2xl anton logo-text" onClick={scrollToTop}>ELIXIR KOMBINAT</div>
@@ -384,6 +390,8 @@ function App() {
               {/* Add your third page content here */}
             </div>
           </section>
+
+          {/* <Footer /> */} 
 
           <footer className="py-12 px-8">
             <div className="header-line-container">

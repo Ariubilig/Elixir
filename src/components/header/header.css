@@ -1,0 +1,120 @@
+/* Толгой хэсгийн загвар */
+header.w-full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Толгой хэсгийн агуулгын хэсэг */
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%;
+  }
+  
+  /* Толгой хэсгийн шугам */
+  .header-line {
+    width: 100%;
+    max-width: 1200px;
+    border: none;
+    height: 1px;
+    background-color: var(--text-color);
+    margin: -0.25rem auto 1rem;
+    opacity: 0.3;
+    transition: background-color 0.7s ease;
+  }
+  
+  /* Толгой шугамын сав */
+  .header-line-container {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Лого текст */
+  .logo-text {
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.7s ease;
+  }
+  
+  /* Фонт хэв маяг */
+  .text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  
+  .anton {
+    font-family: 'Anton', sans-serif;
+  }
+  
+  /* Товчлуурын хэсэг */
+  .flex {
+    display: flex;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .space-x-4 > * + * {
+    margin-left: 1rem;
+  }
+  
+  /* Сагсны товчлуур */
+  .p-2 {
+    padding: 0.5rem;
+  }
+  
+  .border {
+    border-width: 1px;
+  }
+  
+  .border-gray-700 {
+    border-color: #374151;
+  }
+  
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+  
+  .shopping-cart {
+    color: var(--text-color) !important;
+    transition: color 0.7s ease !important;
+  }
+  
+  /* Харанхуй горим солих товчлуур */
+  .dark-mode-toggle {
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.7s ease;
+  }
+  
+  /* Товчлуур дотор зургууд */
+  .relative {
+    position: relative;
+  }
+  
+  /* Зургийн шилжилтийн загвар */
+  img {
+    transition: opacity 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
