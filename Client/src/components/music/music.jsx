@@ -2,11 +2,10 @@ import './MusicPlayer.css';
 import { useEffect, useRef, useState } from 'react';
 import AOS from 'aos';
 
-import PlayIconSvg from '../../assets/icons/PlayIcon.svg';
-import PauseIconSvg from '../../assets/icons/PauseIcon.svg';
-import ForwardIconSvg from '../../assets/icons/ForwardIcon.svg';
-import BackwardIconSvg from '../../assets/icons/BackwardIcon.svg';
-
+import PlayIconSvg from '/icons/PlayIcon.svg';
+import PauseIconSvg from '/icons/PauseIcon.svg';
+import ForwardIconSvg from '/icons/ForwardIcon.svg';
+import BackwardIconSvg from '/icons/BackwardIcon.svg';
 
 const albums = [
   "7AM",
@@ -25,21 +24,23 @@ const trackNames = [
   "Noel - Waves"
 ];
 const trackUrls = [
-  "/src/assets/Music/Emira - 7AM.mp3",
-  "/src/assets/Music/Emira - Setgel.mp3",
-  "/src/assets/Music/Emira ft Noel - Paradise.mp3",
-  "/src/assets/Music/Emira ft Noel Bellatrix - Untitled.mp3",
-  "/src/assets/Music/Grim - TARANTUULAI.mp3",
-  "/src/assets/Music/Noel - Waves.mp3"
+  "/Music/Emira - 7AM.mp3",
+  "/Music/Emira - Setgel.mp3",
+  "/Music/Emira ft Noel - Paradise.mp3",
+  "/Music/Emira ft Noel Bellatrix - Untitled.mp3",
+  "/Music/Grim - TARANTUULAI.mp3",
+  "/Music/Noel - Waves.mp3"
 ];
+
 const artworkUrls = [
-  "/src/assets/MusicImg/7AM.jpg",
-  "/src/assets/MusicImg/Setgel.jpg",
-  "/src/assets/MusicImg/Paradise.jpg",
-  "/src/assets/MusicImg/Untitled.jpg",
-  "/src/assets/MusicImg/TARANTUULAI.jpg",
-  "/src/assets/MusicImg/Waves.jpg"
+  "/MusicImg/7AM.jpg",
+  "/MusicImg/Setgel.jpg",
+  "/MusicImg/Paradise.jpg",
+  "/MusicImg/Untitled.jpg",
+  "/MusicImg/TARANTUULAI.jpg",
+  "/MusicImg/Waves.jpg"
 ];
+
 
 
 function formatTime(sec) {
