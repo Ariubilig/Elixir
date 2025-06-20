@@ -289,29 +289,3 @@ body {
   height: 28px;
   color: #e0e0e0;
 }
-.music-consent-popup {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  background: #111;
-  color: white;
-  padding: 16px 24px;
-  border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  z-index: 2000;
-}
-
-.music-consent-popup button {
-  margin-top: 10px;
-  padding: 8px 16px;
-  background: #464947;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.music-consent-popup button:hover {
-  background: #424744;
-}

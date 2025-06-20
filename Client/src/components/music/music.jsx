@@ -7,8 +7,14 @@ import PauseIconSvg from '../../assets/icons/PauseIcon.svg';
 import ForwardIconSvg from '../../assets/icons/ForwardIcon.svg';
 import BackwardIconSvg from '../../assets/icons/BackwardIcon.svg';
 
+
 const albums = [
-  "7AM", "Setgel", "Paradise", "Untitled", "TARANTUULAI", "Waves"
+  "7AM",
+  "Setgel",
+  "Paradise",
+  "Untitled",
+  "TARANTUULAI",
+  "Waves"
 ];
 const trackNames = [
   "Emira - 7AM",
@@ -35,39 +41,71 @@ const artworkUrls = [
   "/src/assets/MusicImg/Waves.jpg"
 ];
 
+
 function formatTime(sec) {
   const m = Math.floor(sec / 60).toString().padStart(2, '0');
   const s = Math.floor(sec % 60).toString().padStart(2, '0');
   return `${m}:${s}`;
 }
 
-export default function MusicPlayer() {
+export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionChange }) {
+
   useEffect(() => {
     AOS.refresh();
   }, []);
 
   const audioRef = useRef(new Audio());
-  const audio = audioRef.current;
+  const [currIndex, setCurrIndex] = useState(() => {
+    return Math.floor(Math.random() * trackUrls.length);     // Start random
+  });
 
-  const [currIndex, setCurrIndex] = useState(() => Math.floor(Math.random() * trackUrls.length));
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [autoplayAllowed, setAutoplayAllowed] = useState(false);
-  const [showConsent, setShowConsent] = useState(true);
-
   const seekRef = useRef();
   const playerRef = useRef(null);
+///////////////////////////////////////////////////////////////////////////////////////////////
   const [position, setPosition] = useState(() => {
-    const saved = localStorage.getItem('musicPlayerPosition');
-    return saved ? JSON.parse(saved) : { x: 20, y: window.innerHeight - 120 };
-  });
+    const savedPosition = localStorage.getItem('musicPlayerPosition');
+    if (savedPosition) {
+      return JSON.parse(savedPosition);
+    }
+    return { x: 20, y: window.innerHeight - 120 };
+  }); 
+
   const [isDragging, setIsDragging] = useState(false);
+
+  const audio = audioRef.current;
 
   useEffect(() => {
     localStorage.setItem('musicPlayerPosition', JSON.stringify(position));
   }, [position]);
 
+  // Auto play /////////////////////////////////////////////////////////////////////////////////
+
+  useEffect(() => {
+    const initializeAudio = async () => {
+      audio.src = trackUrls[currIndex];
+      audio.load();
+      audio.volume = 0.15;
+      
+      if (autoplayPermission) {
+        try {
+          await audio.play();
+          setIsPlaying(true);
+        } catch (error) {
+          console.log("Auto-play prevented by browser. User interaction required.");
+          setIsPlaying(false);
+        }
+      }
+    };
+    
+    initializeAudio();
+  }, [autoplayPermission]);
+
+  // Save position localStorage whenever it changes ///////////////////////////////////////////
+
+  // Setup drag and drop
   useEffect(() => {
     const playerElement = playerRef.current;
     if (!playerElement) return;
@@ -75,24 +113,29 @@ export default function MusicPlayer() {
     let offsetX, offsetY;
 
     const onMouseDown = (e) => {
+      // Skip if clicking on a button or the seek bar
       if (
-        e.target.tagName === 'BUTTON' ||
-        e.target.closest('button') ||
+        e.target.tagName === 'BUTTON' || 
+        e.target.closest('button') || 
         e.target.closest('#seek-bar-container')
-      ) return;
+      ) {
+        return;
+      }
 
       setIsDragging(true);
       const rect = playerElement.getBoundingClientRect();
       offsetX = e.clientX - rect.left;
       offsetY = e.clientY - rect.top;
-
+      
       document.addEventListener('mousemove', onMouseMove);
       document.addEventListener('mouseup', onMouseUp);
     };
 
     const onMouseMove = (e) => {
       if (!isDragging) return;
-      setPosition({ x: e.clientX - offsetX, y: e.clientY - offsetY });
+      const x = e.clientX - offsetX;
+      const y = e.clientY - offsetY;
+      setPosition({ x, y });
     };
 
     const onMouseUp = () => {
@@ -114,18 +157,15 @@ export default function MusicPlayer() {
     audio.src = trackUrls[currIndex];
     audio.load();
 
-    const handleLoadedMetadata = async () => {
+    const handleLoadedMetadata = () => {
       setDuration(audio.duration);
       setCurrentTime(0);
-      audio.volume = 0.15;
-
-      if (autoplayAllowed) {
-        try {
-          await audio.play();
-          setIsPlaying(true);
-        } catch (err) {
-          console.log("Playback error on track change:", err);
-        }
+      audio.volume = 0.10; // volume 0.10 = 10%
+      if (autoplayPermission) {
+        audio.play().catch(error => {
+          console.log("Auto-play prevented by browser. User interaction required.");
+        });
+        setIsPlaying(autoplayPermission);
       }
     };
 
@@ -133,7 +173,7 @@ export default function MusicPlayer() {
     return () => {
       audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
     };
-  }, [currIndex, autoplayAllowed]);
+  }, [currIndex, autoplayPermission]);
 
   useEffect(() => {
     const update = () => setCurrentTime(audio.currentTime);
@@ -143,22 +183,26 @@ export default function MusicPlayer() {
     };
   }, []);
 
-  const togglePlayPause = async () => {
-    try {
-      if (audio.paused) {
-        await audio.play();
-        setIsPlaying(true);
-      } else {
-        audio.pause();
-        setIsPlaying(false);
+  const togglePlayPause = () => {
+    if (audio.paused) {
+      audio.play();
+      setIsPlaying(true);
+      if (onAutoplayPermissionChange) {
+        onAutoplayPermissionChange(true);
       }
-    } catch (err) {
-      console.error("Playback failed:", err);
+    } else {
+      audio.pause();
+      setIsPlaying(false);
     }
   };
 
-  const playNext = () => setCurrIndex((i) => (i + 1) % trackUrls.length);
-  const playPrevious = () => setCurrIndex((i) => (i - 1 + trackUrls.length) % trackUrls.length);
+  const playNext = () => {
+    setCurrIndex((i) => (i + 1) % trackUrls.length);
+  };
+
+  const playPrevious = () => {
+    setCurrIndex((i) => (i - 1 + trackUrls.length) % trackUrls.length);
+  };
 
   const seek = (e) => {
     if (isDragging) return;
@@ -168,91 +212,61 @@ export default function MusicPlayer() {
   };
 
   return (
-    <>
-      {showConsent && (
-        <div className="music-consent-popup">
-          <p>🎧 This site plays background music. Do you want to start it?</p>
-          <button
-            onClick={async () => {
-              try {
-                audio.src = trackUrls[currIndex];
-                audio.load();
-                audio.volume = 0.15;
-                await audio.play();
-                setIsPlaying(true);
-                setAutoplayAllowed(true);
-                setShowConsent(false);
-              } catch (err) {
-                console.error("Autoplay failed:", err);
-              }
-            }}
-          >
-            Yes, Play Music
-          </button>
-        </div>
-      )}
-
-      <div
-        id="player-container"
-        ref={playerRef}
-        style={{
-          position: 'fixed',
-          top: position.y,
-          left: position.x,
-          cursor: isDragging ? 'grabbing' : 'grab',
-          zIndex: 1000,
-          opacity: isPlaying ? 1 : 0.7
-        }}
-      >
-        <div
-          id="player"
+    <div 
+      id="player-container" 
+      ref={playerRef}
+      style={{
+        position: 'fixed', 
+        top: position.y,
+        left: position.x,
+        cursor: isDragging ? 'grabbing' : 'grab',
+        zIndex: 1000,
+        opacity: isPlaying ? 1 : 0.7
+      }}
+    >
+      <div id="player"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
           data-aos-delay="100"
-          data-aos-offset="0"
-          data-aos-duration="2000"
-        >
-          <div
-            id="player-track"
-            className={isPlaying ? 'active' : ''}
-            style={{ display: isPlaying ? 'block' : 'none' }}
-          >
-            <div id="album-name">{albums[currIndex]}</div>
-            <div id="track-name">{trackNames[currIndex]}</div>
-            <div id="track-time">
-              <div id="current-time">{formatTime(currentTime)}</div>
-              <div id="track-length">{formatTime(duration)}</div>
-            </div>
-            <div id="seek-bar-container" ref={seekRef} onClick={seek}>
-              <div id="seek-bar" style={{ width: `${(currentTime / duration) * 100 || 0}%` }}></div>
-            </div>
+          data-aos-offset="0" 
+          data-aos-duration="2000">
+        <div id="player-track" className={isPlaying ? 'active' : ''} 
+             style={{ display: isPlaying ? 'block' : 'none' }}>
+          <div id="album-name">{albums[currIndex]}</div>
+          <div id="track-name">{trackNames[currIndex]}</div>
+          <div id="track-time">
+            <div id="current-time">{formatTime(currentTime)}</div>
+            <div id="track-length">{formatTime(duration)}</div>
           </div>
-          <div id="player-content">
-            <div id="album-art" className={isPlaying ? 'active' : ''}>
-              {artworkUrls.map((src, i) => (
-                <img key={i} src={src} className={currIndex === i ? 'active' : ''} alt={trackNames[i]} />
-              ))}
-              <div id="buffer-box">Buffering ...</div>
-            </div>
-            <div id="player-controls">
-              <button onClick={playPrevious} style={{ opacity: isPlaying ? 1 : 0.6 }}>
-                <img src={BackwardIconSvg} className="control-icon" alt="Previous" />
-              </button>
-              <button onClick={togglePlayPause}>
-                {isPlaying ? (
-                  <img src={PauseIconSvg} className="control-icon" alt="Pause" />
-                ) : (
-                  <img src={PlayIconSvg} className="control-icon" alt="Play" />
-                )}
-              </button>
-              <button onClick={playNext} style={{ opacity: isPlaying ? 1 : 0.6 }}>
-                <img src={ForwardIconSvg} className="control-icon" alt="Next" />
-              </button>
-            </div>
-            <div className="drag-handle">::</div>
+          <div id="seek-bar-container" ref={seekRef} onClick={seek}>
+            <div id="seek-bar" style={{ width: `${(currentTime / duration) * 100 || 0}%` }}></div>
           </div>
         </div>
+        <div id="player-content">
+          <div id="album-art" className={isPlaying ? 'active' : ''}>
+            {artworkUrls.map((src, i) => (
+              <img key={i} src={src} className={currIndex === i ? 'active' : ''} alt={trackNames[i]} />
+            ))}
+            <div id="buffer-box">Buffering ...</div>
+          </div>
+          <div id="player-controls">
+            <button onClick={playPrevious} style={{ opacity: isPlaying ? 1 : 0.6 }}>
+              <img src={BackwardIconSvg} className="control-icon" alt="Previous" />
+            </button>
+            <button onClick={togglePlayPause}>
+              {isPlaying ? (
+                <img src={PauseIconSvg} className="control-icon" alt="Pause" />
+              ) : (
+                <img src={PlayIconSvg} className="control-icon" alt="Play" />
+              )}
+            </button>
+            <button onClick={playNext} style={{ opacity: isPlaying ? 1 : 0.6 }}>
+              <img src={ForwardIconSvg} className="control-icon" alt="Next" />
+            </button>
+          </div>
+          <div className="drag-handle">::</div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
