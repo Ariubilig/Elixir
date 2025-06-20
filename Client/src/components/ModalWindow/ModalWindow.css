@@ -45,6 +45,25 @@
 .modal-content p {
   font-size: 1.1rem;
   line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+.remember-choice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.remember-choice input[type="checkbox"] {
+  margin-right: 8px;
+  cursor: pointer;
+  accent-color: #e7c59e;
+  width: 16px;
+  height: 16px;
 }
 
 .modal-footer {

@@ -25,7 +25,10 @@ function App() {
 
   const [loadingDone, setLoadingDone] = useState(false);
   const [showMusicModal, setShowMusicModal] = useState(false);
-  const [autoplayPermission, setAutoplayPermission] = useState(false);
+  const [autoplayPermission, setAutoplayPermission] = useState(() => {
+    const savedPermission = localStorage.getItem('musicPermission');
+    return savedPermission === 'agreed';
+  });
   const smoothWrapperRef = useRef(null);
 
   const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
@@ -54,14 +57,30 @@ function App() {
     });
   }, []);  
   
-  useEffect(() => { // Modal window
+  useEffect(() => {
     if (loadingDone) {
-      setShowMusicModal(true);
+      const savedPermission = localStorage.getItem('musicPermission');
+      
+      if (savedPermission === 'agreed') {
+        setShowMusicModal(false);
+        setAutoplayPermission(true);
+      } else {
+        setShowMusicModal(true);
+      }
     }
   }, [loadingDone]);
   
-  const handleMusicPermission = (permission) => {
-    setAutoplayPermission(permission);
+  const handleAccept = (rememberChoice) => {
+    setAutoplayPermission(true);
+    setShowMusicModal(false);
+    
+    if (rememberChoice) {
+      localStorage.setItem('musicPermission', 'agreed');
+    }
+  };
+  
+  const handleDecline = () => {
+    setAutoplayPermission(false);
     setShowMusicModal(false);
   };
 ////////////////////////////////////
@@ -75,13 +94,15 @@ function App() {
       <>
         <Navbar />
         <MusicPlayer 
+          key={autoplayPermission ? "music-enabled" : "music-disabled"}
           autoplayPermission={autoplayPermission} 
           onAutoplayPermissionChange={setAutoplayPermission} 
         />
         {showMusicModal && (
           <ModalWindow 
-            onAccept={() => handleMusicPermission(true)} 
-            onDecline={() => handleMusicPermission(false)} 
+            onAccept={handleAccept}
+            onDecline={handleDecline}
+            showRememberOption={true}
           />
         )}
 

@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ModalWindow.css';
 
-const ModalWindow = ({ onAccept, onDecline }) => {
+const ModalWindow = ({ onAccept, onDecline, showRememberOption = false }) => {
+  const [rememberChoice, setRememberChoice] = useState(true);
+
+  const handleAccept = () => {
+    onAccept(rememberChoice);
+  };
+
+  const handleDecline = () => {
+    onDecline();
+  };
+
   return (
     <div className="modal-overlay">
       <div className="modal-container" 
@@ -15,10 +25,20 @@ const ModalWindow = ({ onAccept, onDecline }) => {
         </div>
         <div className="modal-content">
           <p>Would you like to enable music?</p>
+          {showRememberOption && (
+            <label className="remember-choice">
+              <input 
+                type="checkbox" 
+                checked={rememberChoice} 
+                onChange={(e) => setRememberChoice(e.target.checked)} 
+              />
+              Remember my choice
+            </label>
+          )}
         </div>
         <div className="modal-footer">
-          <button className="agree-btn" onClick={onAccept}>Yeaaaa</button>
-          <button className="decline-btn" onClick={onDecline}>Nou</button>
+          <button className="agree-btn" onClick={handleAccept}>Yeaaaa</button>
+          <button className="decline-btn" onClick={handleDecline}>Nou</button>
         </div>
       </div>
     </div>

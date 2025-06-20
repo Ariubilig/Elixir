@@ -60,11 +60,13 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
     return Math.floor(Math.random() * trackUrls.length);     // Start random
   });
 
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(autoplayPermission);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const seekRef = useRef();
   const playerRef = useRef(null);
+  const autoplayAttemptedRef = useRef(false); // Track if we've tried autoplay
+
 ///////////////////////////////////////////////////////////////////////////////////////////////
   const [position, setPosition] = useState(() => {
     const savedPosition = localStorage.getItem('musicPlayerPosition');
@@ -84,13 +86,15 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
 
   // Auto play /////////////////////////////////////////////////////////////////////////////////
 
+  // Initialize audio when component mounts or when autoplayPermission changes
   useEffect(() => {
     const initializeAudio = async () => {
       audio.src = trackUrls[currIndex];
       audio.load();
       audio.volume = 0.15;
       
-      if (autoplayPermission) {
+      if (autoplayPermission && !autoplayAttemptedRef.current) {
+        autoplayAttemptedRef.current = true;
         try {
           await audio.play();
           setIsPlaying(true);
@@ -102,7 +106,12 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
     };
     
     initializeAudio();
-  }, [autoplayPermission]);
+    
+    // Clean up function
+    return () => {
+      audio.pause();
+    };
+  }, [autoplayPermission, currIndex]);
 
   // Save position localStorage whenever it changes ///////////////////////////////////////////
 
@@ -211,6 +220,19 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
     const percent = (e.clientX - rect.left) / rect.width;
     audio.currentTime = percent * duration;
   };
+
+  // Handle auto-playing when track ends
+  useEffect(() => {
+    const handleEnded = () => {
+      playNext();
+    };
+    
+    audio.addEventListener('ended', handleEnded);
+    
+    return () => {
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, []);
 
   return (
     <div 
