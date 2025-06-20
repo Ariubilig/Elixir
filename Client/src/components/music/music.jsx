@@ -60,7 +60,11 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
     return Math.floor(Math.random() * trackUrls.length);     // Start random
   });
 
-  const [isPlaying, setIsPlaying] = useState(autoplayPermission);
+  // Initialize player with autoplayPermission from localStorage if available
+  const [isPlaying, setIsPlaying] = useState(() => {
+    const savedPermission = localStorage.getItem('musicPermission');
+    return savedPermission === 'agreed' || autoplayPermission;
+  });
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const seekRef = useRef();
@@ -80,6 +84,15 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
 
   const audio = audioRef.current;
 
+  // Load saved music permission from localStorage on component mount and notify parent
+  useEffect(() => {
+    const savedPermission = localStorage.getItem('musicPermission');
+    if (savedPermission === 'agreed' && onAutoplayPermissionChange) {
+      onAutoplayPermissionChange(true);
+    }
+  }, [onAutoplayPermissionChange]);
+
+  // Save position localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem('musicPlayerPosition', JSON.stringify(position));
   }, [position]);
@@ -193,13 +206,23 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
     };
   }, []);
 
+  // Save music permission to localStorage when changed
+  const saveMusicPermission = (permission, remember = true) => {
+    if (remember && permission) {
+      localStorage.setItem('musicPermission', 'agreed');
+    }
+    
+    if (onAutoplayPermissionChange) {
+      onAutoplayPermissionChange(permission);
+    }
+  };
+
   const togglePlayPause = () => {
     if (audio.paused) {
       audio.play();
       setIsPlaying(true);
-      if (onAutoplayPermissionChange) {
-        onAutoplayPermissionChange(true);
-      }
+      // When user manually plays music, update permission and save to localStorage
+      saveMusicPermission(true);
     } else {
       audio.pause();
       setIsPlaying(false);

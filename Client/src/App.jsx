@@ -25,10 +25,7 @@ function App() {
 
   const [loadingDone, setLoadingDone] = useState(false);
   const [showMusicModal, setShowMusicModal] = useState(false);
-  const [autoplayPermission, setAutoplayPermission] = useState(() => {
-    const savedPermission = localStorage.getItem('musicPermission');
-    return savedPermission === 'agreed';
-  });
+  const [autoplayPermission, setAutoplayPermission] = useState(false);
   const smoothWrapperRef = useRef(null);
 
   const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
@@ -56,20 +53,21 @@ function App() {
       once: true,
     });
   }, []);  
-  
+  //////////////////////////////////////////////////////////////////////////// Modal window based on choice
   useEffect(() => {
     if (loadingDone) {
       const savedPermission = localStorage.getItem('musicPermission');
       
       if (savedPermission === 'agreed') {
+        // User previously agreed, don't show modal
         setShowMusicModal(false);
-        setAutoplayPermission(true);
       } else {
+        // No saved preference, show the modal
         setShowMusicModal(true);
       }
     }
   }, [loadingDone]);
-  
+  // Handle music permission choices
   const handleAccept = (rememberChoice) => {
     setAutoplayPermission(true);
     setShowMusicModal(false);
