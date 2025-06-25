@@ -20,6 +20,7 @@ const ModalWindow = ({ onAccept, onDecline, showRememberOption = false }) => {
         data-aos-delay="100"
         data-aos-offset="0" 
         data-aos-duration="1000">
+          
         <div className="modal-header">
           <h2>Music Player</h2>
         </div>

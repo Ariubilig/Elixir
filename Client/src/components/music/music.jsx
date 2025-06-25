@@ -42,7 +42,6 @@ const artworkUrls = [
 ];
 
 
-
 function formatTime(sec) {
   const m = Math.floor(sec / 60).toString().padStart(2, '0');
   const s = Math.floor(sec % 60).toString().padStart(2, '0');
@@ -71,7 +70,7 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
   const playerRef = useRef(null);
   const autoplayAttemptedRef = useRef(false); // Track if we've tried autoplay
 
-///////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////
   const [position, setPosition] = useState(() => {
     const savedPosition = localStorage.getItem('musicPlayerPosition');
     if (savedPosition) {
@@ -97,7 +96,7 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
     localStorage.setItem('musicPlayerPosition', JSON.stringify(position));
   }, [position]);
 
-  // Auto play /////////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////// Auto play
 
   // Initialize audio when component mounts or when autoplayPermission changes
   useEffect(() => {
@@ -126,9 +125,8 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
     };
   }, [autoplayPermission, currIndex]);
 
-  // Save position localStorage whenever it changes ///////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////// Save posistion when change MusicPLayer
 
-  // Setup drag and drop
   useEffect(() => {
     const playerElement = playerRef.current;
     if (!playerElement) return;
@@ -206,7 +204,7 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
     };
   }, []);
 
-  // Save music permission to localStorage when changed
+  ///////////////////////////////////////////////////////////////////////// Save music permission to localStorage when changed
   const saveMusicPermission = (permission, remember = true) => {
     if (remember && permission) {
       localStorage.setItem('musicPermission', 'agreed');
@@ -244,7 +242,7 @@ export default function MusicPlayer({ autoplayPermission, onAutoplayPermissionCh
     audio.currentTime = percent * duration;
   };
 
-  // Handle auto-playing when track ends
+  /////////////////////////////////////////////////////////////////////////  Handle auto-playing when track ends
   useEffect(() => {
     const handleEnded = () => {
       playNext();

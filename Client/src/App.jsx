@@ -29,7 +29,7 @@ function App() {
   const smoothWrapperRef = useRef(null);
 
   const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
-////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////
   useEffect(() => {
     if (loadingDone && smoothWrapperRef.current) {
     
@@ -53,7 +53,7 @@ function App() {
       once: true,
     });
   }, []);  
-  //////////////////////////////////////////////////////////////////////////// Modal window based on choice
+  ///////////////////////////////////////////////////////////////////////// Modal window based on choice
   useEffect(() => {
     if (loadingDone) {
       const savedPermission = localStorage.getItem('musicPermission');
@@ -67,7 +67,7 @@ function App() {
       }
     }
   }, [loadingDone]);
-  // Handle music permission choices
+  ///////////////////////////////////////////////////////////////////////// Handle music permission choices
   const handleAccept = (rememberChoice) => {
     setAutoplayPermission(true);
     setShowMusicModal(false);
@@ -81,7 +81,7 @@ function App() {
     setAutoplayPermission(false);
     setShowMusicModal(false);
   };
-////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////
   return (
     <>
     <Bg />
