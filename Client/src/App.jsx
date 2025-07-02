@@ -35,12 +35,33 @@ function App() {
   } = useMusicPermission(loadingDone);
 /////////////////////////////////////////////////////////////////////////
 
-  const NotFound = () => <div><h1>404 - Page Not Found</h1></div>;
+const NotFound = () => (
+  <div
+    style={{
+      margin: "10px auto",
+      maxWidth: "600px",
+      textAlign: "center",
+      
+    }}
+  >
+    <h1
+      style={{
+        margin: "30px 0",
+        marginTop: "50%",
+        marginBottom: "50%",
+        fontSize: "4em",
+        lineHeight: 1,
+        letterSpacing: "-1px",
+      }}
+    >
+      404 - Page Not Found
+    </h1>
+  </div>
+);
 
 
   return (
     <>
-
 
       <Bg />
       
@@ -78,7 +99,6 @@ function App() {
           </div>
         </>
       )}
-
 
     </>
   );
