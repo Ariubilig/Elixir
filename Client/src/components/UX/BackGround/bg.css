@@ -1,14 +1,14 @@
 :root {
-  --color-bg1: hsl(0, 0%, 0%);
-  --color-bg2: hsl(0, 0%, 0%);
+  /* --color-bg1: hsl(0, 0%, 0%);
+  --color-bg2: hsl(0, 0%, 0%); */
   --color3: 100, 100, 100;
   --blending: screen;
   --circle-size: 120%;
 }
-.dark-mode {
+/* .dark-mode {
   --color-bg1: hsl(0, 0%, 80%);
   --color-bg2: hsl(0, 0%, 80%);
-}
+} */
 
 
 @keyframes moveInCircle {

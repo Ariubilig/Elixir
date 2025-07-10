@@ -10,10 +10,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all 0.3s ease;
   padding-left: 20%;
   padding-right: 20%;
-
 }
 
 .navbar-content {
@@ -28,10 +26,9 @@
 }
 
 .navbar a {
-  color: white;
+  color: var(textL);
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease;
 }
 
 .navbar a:hover {
@@ -50,7 +47,7 @@
   width: 100%;
   border: none;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--divider);
   margin: 10px auto 0 auto;
   max-width: 1400px;
 }

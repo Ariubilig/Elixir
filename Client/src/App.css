@@ -1,8 +1,31 @@
 @import "tailwindcss";
 
+:root {
+  --color-bg1: hsl(0, 0%, 10%);
+  --color-bg2: hsl(0, 0%, 10%);
+
+  --textL: hsl(0, 0%, 100%);
+  --textM: hsl(0, 0%, 80%);
+  --textS: hsl(0, 0%, 80%);
+
+  --divider: hsla(0, 0%, 100%, 0.2);
+}
+[data-theme="light"] {
+  --color-bg1: hsl(0, 0%, 80%);
+  --color-bg2: hsl(0, 0%, 80%);
+
+  --textL: hsl(0, 0%, 0%);
+  --textM: hsl(0, 0%, 0%);
+  --textS: hsl(0, 0%, 0%);
+  
+  --divider: hsla(0, 0%, 40%);
+}
+
+
 body {
   background: var(--color-bg1);
-  color: white;
+  color: var(--textL);
+
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -13,6 +36,8 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  
+  transition: all 1s ease;
 }
 
 #smooth-wrapper {

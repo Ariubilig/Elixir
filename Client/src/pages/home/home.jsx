@@ -20,7 +20,8 @@ function Home() {
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
           data-aos-delay="100"
-          data-aos-offset="0" data-aos-duration="1500">
+          data-aos-offset="0"
+          data-aos-duration="1500">
           <span>E</span><span>L</span><span>I</span><span>X</span><span>I</span><span>R</span>
         </div>
         <p

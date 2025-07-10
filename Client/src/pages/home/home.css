@@ -7,8 +7,7 @@
 .moving-text span {
     display: inline-block;
     animation: move 3s ease-in-out infinite;
-    transition: color 0.7s ease !important;
-    color: white !important;
+    color: var(--textL)
 }
 
 @keyframes move {
@@ -24,7 +23,6 @@
     justify-content: center;
     height: 80vh;
     text-align: center;
-    color: white;
 }
 
 .fisrt p {
@@ -32,4 +30,5 @@
     letter-spacing: 1px;
     line-height: 1.5;
     font-family: 'Protest Revolution';
+    color: var(--textM)
 }
