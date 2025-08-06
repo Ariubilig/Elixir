@@ -1,30 +1,43 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg1: hsl(0, 0%, 10%);
-  --color-bg2: hsl(0, 0%, 10%);
+  --color-bg: hsl(0, 0%, 10%);
 
   --textDefault: hsl(0, 0%, 100%);
   --textL: hsl(0, 0%, 90%);
   --textM: hsl(0, 0%, 80%);
   --textS: hsl(0, 0%, 70%);
 
+  --btn-bg: hsl(0, 0%, 100%);
+  --btn-text: hsl(0, 0%, 10%);
+  --btn-hover: hsl(0, 0%, 90%);
+  
+  --link-color: hsl(0, 0%, 100%);
+  --link-hover: hsl(0, 0%, 70%);
+  
   --divider: hsla(0, 0%, 100%, 0.2);
 }
 [data-theme="light"] {
-  --color-bg1: hsl(0, 0%, 80%);
-  --color-bg2: hsl(0, 0%, 80%);
+  --color-bg: hsl(0, 0%, 80%);
+  
+  --textDefault: hsl(0, 0%, 0%);
+  --textL: hsl(0, 0%, 10%);
+  --textM: hsl(0, 0%, 20%);
+  --textS: hsl(0, 0%, 30%);
+  
+  --btn-bg: hsl(0, 0%, 0%);
+  --btn-text: hsl(0, 0%, 100%);
+  --btn-hover: hsl(0, 0%, 20%);
 
-  --textL: hsl(0, 0%, 0%);
-  --textM: hsl(0, 0%, 0%);
-  --textS: hsl(0, 0%, 0%);
+  --link-color: hsl(0, 0%, 0%);
+  --link-hover: hsl(0, 0%, 30%);
   
   --divider: hsla(0, 0%, 40%);
 }
 
 
 body {
-  background: var(--color-bg1);
+  background: var(--color-bg);
   color: var(--textDefault);
 
   min-height: 100vh;
@@ -38,7 +51,7 @@ body {
   display: flex;
   flex-direction: column;
   
-  transition: all 1s ease;
+  transition: all 0.3s ease;
 }
 
 #smooth-wrapper {

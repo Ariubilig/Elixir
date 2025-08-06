@@ -28,7 +28,7 @@
   height: 100vh;
   position: fixed;
   overflow: hidden;
-  background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+  background: linear-gradient(40deg, var(--color-bg), var(--color-bg));
   top: 0;
   left: 0;
   z-index: -1;
