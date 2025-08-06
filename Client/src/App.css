@@ -4,9 +4,10 @@
   --color-bg1: hsl(0, 0%, 10%);
   --color-bg2: hsl(0, 0%, 10%);
 
-  --textL: hsl(0, 0%, 100%);
+  --textDefault: hsl(0, 0%, 100%);
+  --textL: hsl(0, 0%, 90%);
   --textM: hsl(0, 0%, 80%);
-  --textS: hsl(0, 0%, 80%);
+  --textS: hsl(0, 0%, 70%);
 
   --divider: hsla(0, 0%, 100%, 0.2);
 }
