@@ -16,7 +16,7 @@ function Home() {
 
       <div className='fisrt'>
 
-        <div className="moving-text" style={{fontSize: '208px', fontFamily: 'Protest Revolution', fontWeight: '700'}}
+        <div className="moving-text"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
           data-aos-delay="100"
