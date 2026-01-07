@@ -1,0 +1,35 @@
+.footer {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    margin-top: 100px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.footer-divider {
+    border: none;
+    height: 1px;
+    background-color: var(--divider);
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1400px;
+    padding: 20px 170px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright-text {
+    color: var(--textS);
+    font-size: 14px;
+    opacity: 0.7;
+    text-align: center;
+    font-weight: 300;
+    transition: all 1s ease;
+}
